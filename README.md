@@ -111,9 +111,12 @@ same structures and the Γ point. With aug-TZVP tier-2 the results agree as foll
 
 | Quantity | Systems | Agreement |
 |---|---|---|
-| HOMO–LUMO gap | Si, GaAs, MoS₂, liquid water, bulk MgO | within 5 meV |
+| HOMO–LUMO gap | Si, GaAs, MoS₂, liquid water, bulk MgO, MgO(100)/water | within 5 meV |
 | HOMO–LUMO gap | MgO(100) | 52 meV |
-| Electron density | all compared systems | 0.3–0.6 % of the electrons distributed differently |
+| Electron density | all seven systems with a gap | 0.3–0.5 % of the electrons distributed differently |
+
+QE uses the highest plane-wave cutoff that converged (200–800 Ry; MgO needs 600–800 Ry). In panel (a), metals and
+graphene are left out.
 
 ![CP2K vs Quantum ESPRESSO](closed_shell/figures/qe_compare.png)
 
