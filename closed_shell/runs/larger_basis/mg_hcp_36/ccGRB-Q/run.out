@@ -1,0 +1,449 @@
+ DBCSR| CPU Multiplication driver                                           XSMM (U)
+ DBCSR| Multrec recursion limit                                              512 (U)
+ DBCSR| Multiplication stack size                                           1000 (D)
+ DBCSR| Maximum elements for images                                    UNLIMITED (U)
+ DBCSR| Multiplicative factor virtual images                                   1 (U)
+ DBCSR| Use multiplication densification                                       T (D)
+ DBCSR| Multiplication size stacks                                             3 (U)
+ DBCSR| Use memory pool for CPU allocation                                     F (U)
+ DBCSR| Number of 3D layers                                               SINGLE (U)
+ DBCSR| Use MPI memory allocation                                              F (U)
+ DBCSR| Use RMA algorithm                                                      F (U)
+ DBCSR| Use Communication thread                                               T (U)
+ DBCSR| Communication thread load                                             75 (D)
+ DBCSR| MPI: My process id                                                     0
+ DBCSR| MPI: Number of processes                                               4
+ DBCSR| OMP: Current number of threads                                         4
+ DBCSR| OMP: Max number of threads                                             4
+ DBCSR| Split modifier for TAS multiplication algorithm                  1.0E+00 (U)
+
+
+  **** **** ******  **  PROGRAM STARTED AT               2026-11-24 19:55:36.994
+ ***** ** ***  *** **   PROGRAM STARTED ON                                cn1256
+ **    ****   ******    PROGRAM STARTED BY                              eprop2d1
+ ***** **    ** ** **   PROGRAM PROCESS ID                               1357655
+  **** **  *******  **  PROGRAM STARTED IN /scratch/hpc-prf-metdyn/eprop2d1_Jan/
+                                           54_Claude/cp2k_scf_closed_shell/0022_
+                                           all_basis_sets/main/mg_hcp_36/ccGRB-Q
+                                           /smear300_broyden_a0.2_b0.5_nb8_eigva
+                                           l1.0E-6
+
+ CP2K| version string:                 CP2K version 2026.2 (Development Version)
+ CP2K| source code revision number:                                      107f6cb
+ CP2K| cp2kflags: omp libint fftw3 libxc libxc_gpu parallel scalapack openblas l
+ CP2K|            ibwignernj
+ CP2K| is freely available from                            https://www.cp2k.org/
+ CP2K| Program compiled at                                   2026-11-24 15:55:50
+ CP2K| Program compiled on                                                cn1822
+ CP2K| Program compiled with                                  GCC version 14.3.0
+ CP2K| Program compiled for                                               x86_64
+ CP2K| Program compiled in    /scratch/hpc-prf-metdyn/eprop2d1_Jan/54_Claude/cp2
+ CP2K|                        k_scf_closed_shell/0000_build_otus/build
+ CP2K| Program executable     /scratch/hpc-prf-metdyn/eprop2d1_Jan/54_Claude/cp2
+ CP2K|                        k_scf_closed_shell/0000_build_otus/runtime/cp2k.ps
+ CP2K|                        mp
+ CP2K| Data directory path    /scratch/hpc-prf-metdyn/eprop2d1_Jan/54_Claude/cp2
+ CP2K|                        k_scf_closed_shell/0000_build_otus/source/data
+ CP2K| Input file name                                                   run.inp
+
+ GLOBAL| Force Environment number                                              1
+ GLOBAL| Basis set file name                                    BASIS_MOLOPT_UZH
+ GLOBAL| Potential file name                                       POTENTIAL_UZH
+ GLOBAL| MM Potential file name                                     MM_POTENTIAL
+ GLOBAL| Coordinate file name                                      __STD_INPUT__
+ GLOBAL| Method name                                                        CP2K
+ GLOBAL| Project name                                                        run
+ GLOBAL| Run type                                                         ENERGY
+ GLOBAL| FFT library                                                       FFTW3
+ GLOBAL| Diagonalization library                                       ScaLAPACK
+ GLOBAL| Cholesky decomposition library                                ScaLAPACK
+ GLOBAL| DGEMM library                                                      BLAS
+ GLOBAL| Direct generalized diagonalization requested                          F
+ GLOBAL| Orthonormality check for eigenvectors                          DISABLED
+ GLOBAL| Matrix multiplication library                                 ScaLAPACK
+ GLOBAL| All-to-all communication in single precision                          F
+ GLOBAL| Grid backend                                                       AUTO
+ GLOBAL| Global print level                                                  LOW
+ GLOBAL| MPI I/O enabled                                                       T
+ GLOBAL| Total number of message passing processes                             4
+ GLOBAL| Number of distributed systems (nodes)                                 1
+ GLOBAL| Number of threads for this process                                    4
+ GLOBAL| This output is from process                                           0
+ GLOBAL| OpenMP stack size per thread (OMP_STACKSIZE)                       256M
+ GLOBAL| CPU model name                          AMD EPYC 9655 96-Core Processor
+
+ MEMORY| system memory details [Kb]
+ MEMORY|                        rank 0           min           max       average
+ MEMORY| MemTotal            791059124     791059124     791059124     791059124
+ MEMORY| MemFree             650795988     650795988     650795988     650795988
+ MEMORY| Buffers                  2112          2112          2112          2112
+ MEMORY| Cached               13293368      13293368      13293368      13293368
+ MEMORY| Slab                  2437488       2437488       2437488       2437488
+ MEMORY| SReclaimable           937440        937440        937440        937440
+ MEMORY| MemLikelyFree       656311620     656311620     656311620     656311620
+
+
+ GENERATE|  Preliminary Number of Bonds generated:                             0
+ GENERATE|  Achieved consistency in connectivity generation.
+
+ *******************************************************************************
+ *******************************************************************************
+ **                                                                           **
+ **     #####                         ##              ##                      **
+ **    ##   ##            ##          ##              ##                      **
+ **   ##     ##                       ##            ######                    **
+ **   ##     ##  ##   ##  ##   #####  ##  ##   ####   ##    #####    #####    **
+ **   ##     ##  ##   ##  ##  ##      ## ##   ##      ##   ##   ##  ##   ##   **
+ **   ##  ## ##  ##   ##  ##  ##      ####     ###    ##   ######   ######    **
+ **    ##  ###   ##   ##  ##  ##      ## ##      ##   ##   ##       ##        **
+ **     #######   #####   ##   #####  ##  ##  ####    ##    #####   ##        **
+ **           ##                                                    ##        **
+ **                                                                           **
+ **                                                ... make the atoms dance   **
+ **                                                                           **
+ **            Copyright (C) by CP2K developers group (2000-2026)             **
+ **                      J. Chem. Phys. 152, 194103 (2020)                    **
+ **                                                                           **
+ *******************************************************************************
+
+
+ TOTAL NUMBERS AND MAXIMUM NUMBERS
+
+  Total number of            - Atomic kinds:                                   1
+                             - Atoms:                                         36
+                             - Shell sets:                                   144
+                             - Shells:                                       540
+                             - Primitive Cartesian functions:                504
+                             - Cartesian basis functions:                   2520
+                             - Spherical basis functions:                   1980
+
+  Maximum angular momentum of- Orbital basis functions:                        4
+                             - Local part of the GTH pseudopotential:          2
+                             - Non-local part of the GTH pseudopotential:      1
+
+
+ SCF PARAMETERS         Density guess:                                    ATOMIC
+                        --------------------------------------------------------
+                        max_scf:                                             300
+                        max_scf_history:                                       0
+                        max_diis:                                              4
+                        --------------------------------------------------------
+                        eps_scf:                                        1.00E-08
+                        eps_scf_history:                                0.00E+00
+                        eps_diis:                                       1.00E-01
+                        eps_eigval:                                     1.00E-06
+                        --------------------------------------------------------
+                        level_shift [a.u.]:                             0.000000
+                        SCF update method:                                MIXING
+                        added MOs                                        46    0
+                        --------------------------------------------------------
+                        Mixing method:                            BROYDEN_MIXING
+                                                charge density mixing in g-space
+                        --------------------------------------------------------
+                        Smear method:                                FERMI_DIRAC
+                        Electronic temperature [K]:                        300.0
+                        Electronic temperature [a.u.]:                  9.50E-04
+                        Accuracy threshold:                             1.00E-10
+                        --------------------------------------------------------
+                        No outer SCF
+
+ Extrapolation method: initial_guess
+
+ Number of electrons:                                                        360
+ Number of occupied orbitals:                                                180
+ Number of molecular orbitals:                                               226
+
+ Number of orbital functions:                                               1980
+ Number of independent orbital functions:                                   1974
+
+
+ SCF WAVEFUNCTION OPTIMIZATION
+
+  Step     Update method      Time    Convergence         Total energy    Change
+  ------------------------------------------------------------------------------
+     1 NoMix/Diag. 0.20E+00    2.3     0.87036565     -2283.9937802271 -2.28E+03
+     2 Broy./Diag. 0.20E+00    3.5     0.02549348     -2270.6643464966  1.33E+01
+     3 Broy./Diag. 0.20E+00    3.5     0.07497385     -2278.3668769655 -7.70E+00
+     4 Broy./Diag. 0.20E+00    3.5     0.00162528     -2281.2972713248 -2.93E+00
+     5 Broy./Diag. 0.20E+00    3.6     0.00972981     -2280.1161469149  1.18E+00
+     6 Broy./Diag. 0.20E+00    3.5     0.00972099     -2279.4769457817  6.39E-01
+     7 Broy./Diag. 0.20E+00    3.6     0.00004363     -2279.4733430428  3.60E-03
+     8 Broy./Diag. 0.20E+00    3.6     0.00012881     -2279.4700427003  3.30E-03
+     9 Broy./Diag. 0.20E+00    3.6     0.00000400     -2279.4745450793 -4.50E-03
+    10 Broy./Diag. 0.20E+00    3.6     0.00158568     -2279.4747120148 -1.67E-04
+    11 Broy./Diag. 0.20E+00    3.6     0.00155368     -2279.4747027254  9.29E-06
+    12 Broy./Diag. 0.20E+00    3.6     0.00001310     -2279.4747073658 -4.64E-06
+    13 Broy./Diag. 0.20E+00    3.6     0.00002550     -2279.4747093183 -1.95E-06
+    14 Broy./Diag. 0.20E+00    3.5     0.00003460     -2279.4747108272 -1.51E-06
+    15 Broy./Diag. 0.20E+00    3.6     0.00000265     -2279.4747105931  2.34E-07
+    16 Broy./Diag. 0.20E+00    3.5     0.00000675     -2279.4747086465  1.95E-06
+    17 Broy./Diag. 0.20E+00    3.6     0.00000086     -2279.4747071352  1.51E-06
+    18 Broy./Diag. 0.20E+00    3.6     0.00000074     -2279.4747064760  6.59E-07
+    19 Broy./Diag. 0.20E+00    3.6     0.00000104     -2279.4747063100  1.66E-07
+    20 Broy./Diag. 0.20E+00    3.5     0.00000014     -2279.4747063154 -5.37E-09
+    21 Broy./Diag. 0.20E+00    3.6     0.00000003     -2279.4747063652 -4.98E-08
+    22 Broy./Diag. 0.20E+00    3.5     9.1673E-09     -2279.4747064208 -5.56E-08
+
+  *** SCF run converged in    22 steps ***
+
+
+  Electronic density on regular grids:       -359.9991614886        0.0008385114
+  Core density on regular grids:              360.0000000000       -0.0000000000
+  Total charge density on r-space grids:        0.0008385114
+  Total charge density g-space grids:           0.0008385114
+
+  Overlap energy of the core charge distribution:               0.00000000000000
+  Self energy of the core charge distribution:              -5270.42435744135310
+  Core Hamiltonian energy:                                   1556.26066200372770
+  Hartree energy:                                            1744.37098862284392
+  Exchange-correlation energy:                               -309.67373584284201
+  Electronic entropic energy:                                  -0.00826376314366
+  Fermi energy:                                                 0.19172675996134
+
+  Total energy:                                             -2279.47470642076814
+  Total energy (extrapolated to T->0):                      -2279.47057453919615
+
+ ENERGY| Total FORCE_EVAL ( QS ) energy [hartree]          -2279.474706420768143
+
+ -------------------------------------------------------------------------------
+ -                                                                             -
+ -                                DBCSR STATISTICS                             -
+ -                                                                             -
+ -------------------------------------------------------------------------------
+ COUNTER                                    TOTAL       BLAS       SMM       ACC
+ flops    55 x    55 x    98           8687170800       0.0%    100.0%      0.0%     
+ flops    55 x    55 x   128          11346508800       0.0%    100.0%      0.0%     
+ flops inhomo. stacks                           0       0.0%      0.0%      0.0%
+ flops total                        20.033680E+09       0.0%    100.0%      0.0%
+ flops max/rank                      5.143783E+09       0.0%    100.0%      0.0%
+ matmuls inhomo. stacks                         0       0.0%      0.0%      0.0%
+ matmuls total                              29304       0.0%    100.0%      0.0%
+ number of processed stacks                   704       0.0%    100.0%      0.0%
+ average stack size                                     0.0      41.6       0.0
+ marketing flops                    33.292046E+09
+ -------------------------------------------------------------------------------
+ # multiplications                             22
+ max memory usage/rank               3.721630E+09
+ # max total images/rank                        1
+ # max 3D layers                                1
+ # MPI messages exchanged                     176
+ MPI messages size (bytes):
+  total size                       157.512960E+06
+  min size                         776.160000E+03
+  max size                           1.013760E+06
+  average size                     894.960000E+03
+ MPI breakdown and total messages size (bytes):
+             size <=      128                   0                        0
+       128 < size <=     8192                   0                        0
+      8192 < size <=    32768                   0                        0
+     32768 < size <=   131072                   0                        0
+    131072 < size <=  4194304                 176                157512960
+   4194304 < size <= 16777216                   0                        0
+  16777216 < size                               0                        0
+ -------------------------------------------------------------------------------
+ -                                                                             -
+ -                      DBCSR MESSAGE PASSING PERFORMANCE                      -
+ -                                                                             -
+ -------------------------------------------------------------------------------
+ ROUTINE             CALLS      AVE VOLUME [Bytes]
+ MP_Bcast                3                     12.
+ MP_Allreduce          133                     11.
+ MP_Alltoall           352                 328156.
+ MP_ISend              176                 254246.
+ MP_IRecv              176                 194846.
+ -------------------------------------------------------------------------------
+
+ -------------------------------------------------------------------------------
+ -                                                                             -
+ -                                GRID STATISTICS                              -
+ -                                                                             -
+ -------------------------------------------------------------------------------
+ LP    KERNEL             BACKEND                              COUNT     PERCENT
+ 3     collocate general  CPU                                 597586      14.06%
+ 3     integrate general  CPU                                 571604      13.45%
+ 4     collocate general  CPU                                 529023      12.45%
+ 4     integrate general  CPU                                 506022      11.91%
+ 2     collocate general  CPU                                 454986      10.71%
+ 2     integrate general  CPU                                 435204      10.24%
+ 5     collocate general  CPU                                 370484       8.72%
+ 5     integrate general  CPU                                 354376       8.34%
+ 6     collocate general  CPU                                 154491       3.64%
+ 6     integrate general  CPU                                 147774       3.48%
+ 7     collocate general  CPU                                  52348       1.23%
+ 7     integrate general  CPU                                  50072       1.18%
+ 8     collocate general  CPU                                  13064       0.31%
+ 8     integrate general  CPU                                  12496       0.29%
+ 0     collocate general  CPU                                      9       0.00%
+ -------------------------------------------------------------------------------
+
+ -------------------------------------------------------------------------------
+ -                                                                             -
+ -                          OFFLOAD MEMPOOL STATISTICS                         -
+ -                                                                             -
+ -------------------------------------------------------------------------------
+ Memory consumption                Number of allocations  Used [MiB]  Size [MiB]
+ Host                                                  6          39          39
+ -------------------------------------------------------------------------------
+
+ MEMORY| Estimated peak process memory [MiB]                                1282
+
+ -------------------------------------------------------------------------------
+ -                                                                             -
+ -                         MESSAGE PASSING PERFORMANCE                         -
+ -                                                                             -
+ -------------------------------------------------------------------------------
+
+ ROUTINE             CALLS      AVE VOLUME [Bytes]
+ MP_Group                4
+ MP_Bcast              130                 284126.
+ MP_Allreduce          339                   1233.
+ MP_Sync                27
+ MP_Alltoall           475               32590803.
+ MP_SendRecv           279                2088037.
+ MP_ISendRecv          264                2038608.
+ MP_Wait               264
+ -------------------------------------------------------------------------------
+
+
+ -------------------------------------------------------------------------------
+ -                                                                             -
+ -                           R E F E R E N C E S                               -
+ -                                                                             -
+ -------------------------------------------------------------------------------
+ 
+ CP2K version 2026.2 (Development Version), the CP2K developers group (2026).
+ CP2K is freely available from https://www.cp2k.org/ .
+ 
+ M. Iannuzzi, J. Wilhelm, F. Stein, A. Bussy, H. Elgabarty, D. Golze, A. Hehn, 
+ M. Graml, S. Marek, B. Sertcan Gökmen, C. Schran, H. Forbert, R. Z. 
+ Khaliullin, A. Kozhevnikov, M. Taillefumier, R. Meli, V. V. Rybkin, M. Brehm, 
+ R. Schade, O. Schütt, J. V. Pototschnig, H. Mirhosseini, A. Knüpfer, D. Marx, 
+ M. Krack, J. Hutter, T. D. Kühne.
+ J. Phys. Chem. B 130, 1237-1310 (2026).
+ The CP2K Program Package Made Simple.
+ https://doi.org/10.1021/acs.jpcb.5c05851
+
+ T. D. Kühne, M. Iannuzzi, M. Del Ben, V. V. Rybkin, P. Seewald, F. Stein, T. 
+ Laino, R. Z. Khaliullin, O. Schütt, F. Schiffmann, D. Golze, J. Wilhelm, S. 
+ Chulkov, M. H. Bani-Hashemian, V. Weber, U. Borstnik, M. Taillefumier, A. S. 
+ Jakobovits, A. Lazzaro, H. Pabst, T. Müller, R. Schade, M. Guidon, S. 
+ Andermatt, N. Holmberg, G. K. Schenter, A. Hehn, A. Bussy, F. Belleflamme, G. 
+ Tabacchi, A. Glöß, M. Lass, I. Bethune, C. J. Mundy, C. Plessl, M. Watkins, 
+ J. VandeVondele, M. Krack, J. Hutter.
+ J. Chem. Phys. 152, 194103 (2020).
+ CP2K: An electronic structure and molecular dynamics software package - 
+ Quickstep: Efficient and accurate electronic structure calculations.
+ https://doi.org/10.1063/5.0007045
+
+ O. Schuett, P. Messmer, J. Hutter, J. VandeVondele.
+ Electronic Structure Calculations on Graphics Processing Units, 173-190 (2016).
+ GPU-Accelerated Sparse Matrix-Matrix Multiplication for Linear Scaling Density 
+ Functional Theory.
+ https://doi.org/10.1002/9781118670712.ch8
+
+ U. Borstnik, J. VandeVondele, V. Weber, J. Hutter.
+ Parallel Comput. 40, 47-58 (2014).
+ Sparse matrix multiplication: The distributed block-compressed sparse row 
+ library.
+ https://doi.org/10.1016/j.parco.2014.03.012
+
+ J. VandeVondele, J. Hutter.
+ J. Chem. Phys. 127, 114105 (2007).
+ Gaussian basis sets for accurate calculations on molecular systems in gas and 
+ condensed phases.
+ https://doi.org/10.1063/1.2770708
+
+ J. VandeVondele, M. Krack, F. Mohamed, M. Parrinello, T. Chassaing, J. Hutter.
+ Comput. Phys. Commun. 167, 103-128 (2005).
+ QUICKSTEP: Fast and accurate density functional calculations using a mixed 
+ Gaussian and plane waves approach.
+ https://doi.org/10.1016/j.cpc.2004.12.014
+
+ M. Krack.
+ Theor. Chem. Acc. 114, 145-152 (2005).
+ Pseudopotentials for H to Kr optimized for gradient-corrected 
+ exchange-correlation functionals.
+ https://doi.org/10.1007/s00214-005-0655-y
+
+ M. Frigo, S. G. Johnson.
+ Proc. IEEE 93, 216-231 (2005).
+ The design and implementation of FFTW3.
+ https://doi.org/10.1109/JPROC.2004.840301
+
+ C. Hartwigsen, S. Goedecker, J. Hutter.
+ Phys. Rev. B 58, 3641-3662 (1998).
+ Relativistic separable dual-space Gaussian pseudopotentials from H to Rn.
+ https://doi.org/10.1103/PhysRevB.58.3641
+
+ G. Lippert, J. Hutter, M. Parrinello.
+ Mol. Phys. 92, 477-487 (1997).
+ A hybrid Gaussian and plane wave density functional scheme.
+ https://doi.org/10.1080/002689797170220
+
+ S. Goedecker, M. Teter, J. Hutter.
+ Phys. Rev. B 54, 1703-1710 (1996).
+ Separable dual-space Gaussian pseudopotentials.
+ https://doi.org/10.1103/PhysRevB.54.1703
+
+ J. P. Perdew, K. Burke, M. Ernzerhof.
+ Phys. Rev. Lett. 77, 3865-3868 (1996).
+ Generalized gradient approximation made simple.
+ https://doi.org/10.1103/PhysRevLett.77.3865
+
+ N. D. Mermin.
+ Phys. Rev. 137, A1441-A1443 (1965).
+ Thermal Properties of the Inhomogeneous Electron Gas.
+ https://doi.org/10.1103/PhysRev.137.A1441
+
+ C. G. Broyden.
+ Math. Comput. 19, 577-593 (1965).
+ A class of methods for solving nonlinear simultaneous equations.
+ https://doi.org/10.1090/S0025-5718-1965-0198670-6
+
+
+ -------------------------------------------------------------------------------
+ -                                                                             -
+ -                                T I M I N G                                  -
+ -                                                                             -
+ -------------------------------------------------------------------------------
+ SUBROUTINE                       CALLS  ASD         SELF TIME        TOTAL TIME
+                                MAXIMUM       AVERAGE  MAXIMUM  AVERAGE  MAXIMUM
+ CP2K                                 1  1.0    0.004    0.005   80.942   80.942
+ qs_energies                          1  2.0    0.000    0.000   80.751   80.751
+ scf_env_do_scf                       1  3.0    0.000    0.000   78.377   78.377
+ scf_env_do_scf_inner_loop           22  4.0    0.002    0.004   78.376   78.377
+ qs_ks_update_qs_env                 22  5.0    0.000    0.000   38.633   38.875
+ rebuild_ks_matrix                   22  6.0    0.000    0.000   38.617   38.859
+ qs_ks_build_kohn_sham_matrix        22  7.0    0.004    0.004   38.617   38.859
+ sum_up_and_integrate                22  8.0    0.000    0.001   34.438   34.680
+ integrate_v_rspace                  22  9.0    0.001    0.001   34.424   34.665
+ grid_integrate_task_list            22 10.0   33.652   34.138   33.652   34.138
+ qs_rho_update_rho_low               23  5.0    0.000    0.000   31.848   31.849
+ calculate_rho_elec                  23  6.0    0.044    0.044   31.848   31.849
+ grid_collocate_task_list            23  7.0   30.540   30.823   30.540   30.823
+ qs_scf_new_mos                      22  5.0    0.001    0.001    8.006    8.245
+ eigensolver_symm                    22  6.0    0.001    0.002    7.565    7.567
+ cp_fm_syevd                         23  6.9    0.000    0.000    6.621    6.630
+ cp_fm_syevd_base                    23  7.9    6.613    6.614    6.613    6.614
+ fft_wrap_pw1pw2                    401 10.0    0.004    0.004    4.193    4.250
+ fft_wrap_pw1pw2_300                266 11.3    0.228    0.235    4.072    4.124
+ fft3d_ps                           401 12.0    2.416    2.432    3.431    3.500
+ qs_vxc_create                       22  8.0    0.000    0.000    3.391    3.401
+ xc_vxc_pw_create                    22  9.0    0.062    0.063    3.390    3.400
+ xc_pw_derive                       132 11.0    0.001    0.001    2.255    2.273
+ init_scf_run                         1  3.0    0.001    0.001    1.975    1.976
+ xc_rho_set_and_dset_create          22 10.0    0.046    0.048    1.945    1.950
+ -------------------------------------------------------------------------------
+
+ The number of warnings for this run is : 0
+ 
+ -------------------------------------------------------------------------------
+  **** **** ******  **  PROGRAM ENDED AT                 2026-11-24 19:56:59.760
+ ***** ** ***  *** **   PROGRAM RAN ON                                    cn1256
+ **    ****   ******    PROGRAM RAN BY                                  eprop2d1
+ ***** **    ** ** **   PROGRAM PROCESS ID                               1357655
+  **** **  *******  **  PROGRAM STOPPED IN /scratch/hpc-prf-metdyn/eprop2d1_Jan/
+                                           54_Claude/cp2k_scf_closed_shell/0022_
+                                           all_basis_sets/main/mg_hcp_36/ccGRB-Q
+                                           /smear300_broyden_a0.2_b0.5_nb8_eigva
+                                           l1.0E-6

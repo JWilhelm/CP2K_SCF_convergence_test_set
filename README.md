@@ -2,8 +2,8 @@
 
 This repository tests which CP2K SCF setting converges every system of a broad test set in **one single run from
 `SCF_GUESS ATOMIC`**: no restarts, no two-step runs, and no per-system tuning. The test set contains molecules,
-liquids, crystals, surfaces, interfaces and metals with up to 192 atoms, computed with basis sets from DZVP up to
-aug-TZ2 (all 49 systems) and cc-pVQZ (all 31 systems with elements H–Ar).
+liquids, crystals, surfaces, interfaces and metals with up to 192 atoms. Every system is computed in every basis set
+from DZVP up to aug-TZ2, plus ccGRB-Q where it exists and cc-pVQZ for all systems with elements H–Ar.
 
 Folder [`closed_shell/`](closed_shell) holds the closed-shell (non-magnetic) systems. Magnetic systems will follow
 in a separate folder.
@@ -40,7 +40,7 @@ overlap matrix filtered with `CHOLESKY OFF` and `EPS_EIGVAL 1.0E-6`, and `EPS_SC
 Use the same setting for insulators and metals, and for small and large basis sets.
 
 **Result:**
-- This setting converges **247 of 247 runs**: 163 runs with a band gap and 84 without.
+- This setting converges **484 of 484 runs**: 318 runs with a band gap and 166 without.
 - Every run reaches the ground state of its basis set. In each case the final energy equals the reference energy
   (definition below).
 - Number of SCF steps:
@@ -48,15 +48,16 @@ Use the same setting for insulators and metals, and for small and large basis se
   | Runs | Median | Maximum |
   |---|---|---|
   | With a band gap | 25 | 75 |
-  | Without a band gap | 27 | 158 |
+  | Without a band gap | 28 | 158 |
 
-**Why `EPS_EIGVAL` is needed.** Without the overlap filtering, the same mixing converges 231 of 247 runs. The
+**Why `EPS_EIGVAL` is needed.** Without the overlap filtering, the same mixing converges 455 of 484 runs. The
 failures are nearly linearly dependent basis sets:
-- cc-pVQZ in dense solids (Si, amorphous Si, diamond, SiC, LiF, MgO, Al₂O₃, Al);
-- aug-TZ2 for Al₂O₃, bulk Al and Pd(111).
+- cc-pVQZ in dense solids (Si, amorphous Si, diamond, SiC, LiF, MgO, Al₂O₃, Al, also displaced);
+- ccGRB-Q for Al₂O₃, LiF, SrTiO₃, Li and Al;
+- aug-TZ2 for Al₂O₃, bulk Al and Pd(111); aug-DZ2 for Pd(111).
 
-Four further runs without filtering (bulk Si TZVP, bulk Al DZVP and TZVP, Au₃₈ ccGRB-Q) stop at `EPS_SCF 1.0E-7`
-0.02–0.2 meV/atom above the reference energy, more than the tolerance below.
+Five further runs without filtering (displaced Si DZVP and TZVP, bulk Al DZVP and TZVP, Au₃₈ ccGRB-Q) stop at
+`EPS_SCF 1.0E-7` 0.01–0.2 meV/atom above the reference energy, more than the tolerance below.
 
 With cc-pVQZ and no filtering, the diagonalisation can even end several hartree *below* the true energy (collapse).
 
@@ -64,13 +65,14 @@ With cc-pVQZ and no filtering, the diagonalisation can even end several hartree 
 on, while the energy is constant to 10⁻⁶ hartree; with `EPS_SCF 1.0E-8` this run does not finish.
 
 **Effect of the filtering on the energy** (energy with filtering minus energy without):
-- DZVP, TZVP, TZV2P and aug-DZ2: below 0.03 meV/atom.
-- ccGRB-Q: at most 0.4 meV/atom.
+- DZVP, TZVP, TZV2P and aug-DZ2: at most 0.23 meV/atom (except Pd(111)); for bulk Al with DZVP and TZVP the same
+  offset is there without filtering (slow final convergence at `EPS_SCF 1.0E-7`).
 - cc-pVQZ: at most 2.4 meV/atom (LiF).
 - aug-TZ2: at most 3.3 meV/atom (GaN), except Pd(111).
+- ccGRB-Q: at most 6.9 meV/atom (SrTiO₃).
 
-**Known problem: Pd(111) with aug-TZ2.** The run converges, but the filtering raises the energy by 113 meV/atom.
-This basis set is nearly linearly dependent in the metal (overlap condition number 1.7 × 10¹⁰). Without filtering,
+**Known problem: Pd(111) with aug-DZ2 and aug-TZ2.** The runs converge, but the filtering raises the energy by
+172 meV/atom (aug-DZ2) and 113 meV/atom (aug-TZ2). The aug-TZ2 basis set is nearly linearly dependent in the metal (overlap condition number 1.7 × 10¹⁰). Without filtering,
 or with `EPS_EIGVAL 1.0E-10`, the energy is constant to 10⁻⁸ hartree, but the SCF residual stays at 10⁻⁴: CP2K
 measures it as the largest change of a density-matrix element in the atomic-orbital basis, and these elements are
 noisy in the nearly dependent directions. No setting tested gives both convergence and the unfiltered energy here.
@@ -79,22 +81,23 @@ noisy in the nearly dependent directions. No setting tested gives both convergen
 forum suggests a different setting for metals: Broyden α 0.1, β 1.5, NBROYDEN 8, 300 K.
 - Sources: J. Hutter, 1 Dec 2009, [Rh(111) surface](https://groups.google.com/g/cp2k/c/MXYYuJmf1s0); M. Iannuzzi,
   4 Oct 2011, [metallic systems](https://groups.google.com/g/cp2k/c/OQczYEVvpME).
-- That setting converges 224 of 247 runs and needs about twice as many SCF steps (median 55 with a gap, 50
+- That setting converges 445 of 484 runs and needs about twice as many SCF steps (median 56 with a gap, 52
   without).
 
 **CP2K defaults converge far less often:**
 
 | CP2K default setting | Runs converged |
 |---|---|
-| OT | 64 of 163 runs with a gap |
-| Diagonalisation | 114 of 163 runs with a gap |
-| Smearing with the default mixing | 26 of 84 runs without a gap |
+| OT | 130 of 318 runs with a gap |
+| Diagonalisation | 218 of 318 runs with a gap |
+| Smearing with the default mixing | 44 of 166 runs without a gap |
 
 ## Comparison of SCF settings
 
 ### Systems with a band gap
 
-The figure below shows the same 163 runs for every setting, one bar per basis set:
+The figure below shows the same 318 runs for every setting, one bar per basis set (legend: runs per basis set;
+numbers at the bars: runs converged of runs computed, where not all converge):
 - (a) SCF runs converged;
 - (b) SCF steps of the converged runs (box: 25–75 %, line: median, whiskers: minimum and maximum).
 
@@ -105,7 +108,7 @@ still running after 60–120 min (the time limit per run) count as not converged
 
 ### Metals and semimetals
 
-The figure below shows the same 84 runs (metals, graphene, graphite and the metallic (5,5) carbon nanotube), all
+The figure below shows the same 166 runs (metals, graphene, graphite and the metallic (5,5) carbon nanotube), all
 with Fermi–Dirac smearing, one bar per basis set.
 
 ![Systems without a band gap](closed_shell/figures/converged_nogap.png)
@@ -118,8 +121,8 @@ The figure below shows Broyden mixing (α 0.2, β 0.5 bohr⁻¹, 300 K) per basi
 
 ![Basis sets and overlap filtering](closed_shell/figures/basis_filter.png)
 
-`EPS_EIGVAL 1.0E-7` changes the energies less (at most 0.6 meV/atom, Pd(111) 51 meV/atom), but with cc-pVQZ the SCF
-of Al(111) and bulk Al collapses 2.8–11.7 eV/atom below the true energy.
+`EPS_EIGVAL 1.0E-7` changes the energies less (at most 0.6 meV/atom), but does not converge Pd(111) with aug-DZ2
+and aug-TZ2, Li and LiF with ccGRB-Q, and Al(111) and bulk Al with cc-pVQZ.
 
 ### Comparison with Quantum ESPRESSO
 
@@ -164,7 +167,8 @@ graphene are left out; the axis is logarithmic on both sides and linear between 
 **Method:**
 - PBE with GTH-PBE pseudopotentials (`POTENTIAL_UZH`).
 - `CUTOFF` 600 Ry, `REL_CUTOFF` 60 Ry, `EPS_DEFAULT 1.0E-12`, Γ point.
-- CP2K 2026.2 development version (master of 22 Nov 2026).
+- CP2K 2026.2 development version (master of 22 Nov 2026, commit 107f6cbd5c), built on Noctua 2 and Otus (PC2,
+  Paderborn); the same input gives the same energy on both machines to 10⁻⁹ hartree.
 
 **Systems:** 49 systems with 5–192 atoms, listed in [`closed_shell/systems.csv`](closed_shell/systems.csv):
 
@@ -178,21 +182,21 @@ graphene are left out; the axis is logarithmic on both sides and linear between 
 
 | Basis set label | CP2K basis set | Systems |
 |---|---|---|
-| DZVP, TZVP | `DZVP-`/`TZVP-MOLOPT-PBE-GTH` | DZVP: `stage1` only; TZVP: all systems |
-| TZV2P | `TZV2P-MOLOPT-PBE-GTH` | all 25 `stage1` systems |
-| aug-DZ2 | `aug-DZ2-MOLOPT-PBE-GTH`, else `aug-DZVP-MOLOPT-GTH-tier-2` | all 25 `stage1` systems |
-| aug-TZ2 | `aug-TZ2-MOLOPT-PBE-GTH`, else `aug-TZVP-MOLOPT-GTH-tier-2` | all 49 systems |
-| ccGRB-Q | `ccGRB-Q` | `stage1` systems with at most 100 atoms (MoS₂ missing: CP2K cannot read the Mo set) |
-| cc-pVQZ | `cc-pVQZ-GTH` (Ye and Berkelbach, [github.com/hongzhouye/ccgto](https://github.com/hongzhouye/ccgto); converted file `closed_shell/BASIS_ccGTO_YE`) | all 31 systems with elements H–Ar |
+| DZVP, TZVP | `DZVP-`/`TZVP-MOLOPT-PBE-GTH` | all 49 systems and 25 displaced structures (74 runs per setting) |
+| TZV2P | `TZV2P-MOLOPT-PBE-GTH` | all (74) |
+| aug-DZ2 | `aug-DZ2-MOLOPT-PBE-GTH`, else `aug-DZVP-MOLOPT-GTH-tier-2` | all (74) |
+| aug-TZ2 | `aug-TZ2-MOLOPT-PBE-GTH`, else `aug-TZVP-MOLOPT-GTH-tier-2` | all (74) |
+| ccGRB-Q | `ccGRB-Q` | all except MoS₂ (CP2K cannot read the Mo set) and the systems with Na (no Na set) (68) |
+| cc-pVQZ | `cc-pVQZ-GTH` (Ye and Berkelbach, [github.com/hongzhouye/ccgto](https://github.com/hongzhouye/ccgto); converted file `closed_shell/BASIS_ccGTO_YE`) | all 31 systems and 15 displaced structures with elements H–Ar (46) |
 
-**Runs:** each run is one system in one basis set with one setting: 247 runs with the recommended setting, 3647 runs
+**Runs:** each run is one system in one basis set with one setting: 484 runs with the recommended setting, 5771 runs
 in total for all settings.
 
 ## Files
 
 | Path | Content |
 |---|---|
-| `closed_shell/runs/<set>/<system>/<basis>/run.inp`, `run.out` | CP2K input and output of all 247 runs with the recommended setting (`larger_basis`: TZV2P, aug-DZ2, aug-TZ2, ccGRB-Q, cc-pVQZ) |
+| `closed_shell/runs/<set>/<system>/<basis>/run.inp`, `run.out` | CP2K input and output of all 484 runs with the recommended setting (`larger_basis`: all basis sets computed after the first stage, i.e. TZV2P, aug-DZ2, aug-TZ2, ccGRB-Q, cc-pVQZ, and DZVP, TZV2P, aug-DZ2 for the `validation` systems) |
 | `closed_shell/results/all_runs.csv` | All runs of all settings, evaluated at `EPS_SCF 1.0E-7`: set, system, basis, setting, class (`gap`/`nogap`), atoms, CP2K converged (0/1), SCF steps, energy minus reference (meV/atom), converged by the definition above (0/1) |
 | `closed_shell/systems.csv` | The 49 systems with set, group, class, number of atoms and charge |
 | `closed_shell/BASIS_ccGTO_YE` | cc-pVQZ basis sets in CP2K format |
