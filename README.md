@@ -186,13 +186,21 @@ To run an input, set `BASIS_SET_FILE_NAME BASIS_ccGTO_YE` to the path of `closed
 ## Limits
 
 **Largest basis set: aug-ccGRB-Q.** This is ccGRB-Q plus the diffuse functions aug-cc-Q, the largest basis set in the
-CP2K data directory. No single `EPS_EIGVAL` works for all systems:
-- `1.0E-7`: most runs diverge.
-- `1.0E-6`: almost all runs converge, but for TiO₂ and MgO(100)/water the SCF residual stalls or diverges, and some
-  energies are implausible (TiO₂ anatase ends 5 hartree below TZVP).
-- `1.0E-5`: the runs converge, but energies lie up to 120 meV/atom above the smaller basis sets (TiO₂).
+CP2K data directory. With aug-ccGRB-Q, "SCF converged" is not enough; the energy must also be checked against the
+smaller basis sets. The check covers 44 systems; bulk metals with 108 atoms or more are left out. No single
+`EPS_EIGVAL` gives both convergence and a plausible energy for every system:
+- `1.0E-6`: 38 of 44 systems converge.
+  - Si and SrTiO₃ end 11–91 meV/atom *above* smaller basis sets, because the filtering removes too many functions.
+  - CaF₂(111), LiF, TiN, TiO₂ (rutile and anatase) and MgO(100)/water do not converge. Their energies collapse to
+    between 70 meV/atom and 9 eV/atom below the smaller basis sets.
+- `1.0E-5`: TiO₂ and MgO(100)/water converge, but TiO₂ ends 80–121 meV/atom too high.
+- `1.0E-7`: only 33 of 88 runs converge; most of the others collapse.
 
-The recommended setting is therefore tested up to aug-TZ2 and cc-pVQZ. These runs are still being evaluated and are
-not in this repository.
+The recommended setting is therefore reliable up to aug-TZ2, ccGRB-Q and cc-pVQZ.
+
+The figure below shows the aug-ccGRB-Q energy minus the lowest energy of the smaller basis sets (meV/atom, symmetric
+logarithmic axis). Filled markers: SCF converged.
+
+![aug-ccGRB-Q energies](closed_shell/figures/aug_ccgrbq.png)
 
 **MoS₂** is missing for ccGRB-Q, because CP2K cannot read `BASIS_ccGRB_UZH` for Mo.
