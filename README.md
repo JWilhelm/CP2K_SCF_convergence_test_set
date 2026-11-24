@@ -168,6 +168,7 @@ graphene are left out.
 |---|---|
 | `closed_shell/runs/<set>/<system>/<basis>/run.inp`, `run.out` | CP2K input and output of all 198 runs with the recommended setting |
 | `closed_shell/results/all_runs.csv` | All 3068 runs of all 43 settings: set, system, basis, setting, class (`gap`/`nogap`), atoms, CP2K converged (0/1), SCF steps, energy minus reference (meV/atom), converged by the definition above (0/1) |
+| `closed_shell/results/aug_ccgrbq_runs.json` | All aug-ccGRB-Q runs: status, SCF steps, last residual, energy minus the best smaller basis set (meV/atom) |
 | `closed_shell/systems.csv` | The 49 systems with set, group, class, number of atoms and charge |
 | `closed_shell/BASIS_ccGTO_YE` | cc-pVQZ basis sets in CP2K format |
 
