@@ -94,8 +94,7 @@ forum suggests a different setting for metals: Broyden α 0.1, β 1.5, NBROYDEN 
 
 ### Systems with a band gap
 
-The figure below shows the same 163 runs for every setting, split into three groups of basis sets (108 runs with
-DZVP to TZV2P, aug-DZ2 and ccGRB-Q; 32 runs with aug-TZ2; 23 runs with cc-pVQZ):
+The figure below shows the same 163 runs for every setting, one bar per basis set:
 - (a) SCF runs converged;
 - (b) SCF steps of the converged runs (box: 25–75 %, line: median, whiskers: minimum and maximum).
 
@@ -107,7 +106,7 @@ still running after 60–120 min (the time limit per run) count as not converged
 ### Metals and semimetals
 
 The figure below shows the same 84 runs (metals, graphene, graphite and the metallic (5,5) carbon nanotube), all
-with Fermi–Dirac smearing, split into the same three groups of basis sets (59, 17 and 8 runs).
+with Fermi–Dirac smearing, one bar per basis set.
 
 ![Systems without a band gap](closed_shell/figures/converged_nogap.png)
 
@@ -135,7 +134,9 @@ same structures and the Γ point. With aug-TZVP tier-2 the results agree as foll
 
 The remaining 52 meV for MgO(100) come from the CP2K basis set, not from the QE cutoff (the QE gap changes by 3 meV
 from 400 to 600 Ry): the lowest conduction state of the free surface extends into the vacuum and needs diffuse
-functions. cc-pVQZ, which has no diffuse functions, differs by 143 meV.
+functions. cc-pVQZ, which has no diffuse functions, differs by 143 meV. A test confirms this: with one layer of
+ghost atoms (Mg and O basis functions without nuclei) 2.1 Å above and below the slab, the difference drops from 52
+to 0.5 meV (point "aug-TZ2 + ghost layer" in the figure).
 
 QE uses the highest plane-wave cutoff that converged (200–800 Ry; MgO needs 600–800 Ry). In panel (a), metals and
 graphene are left out; the axis is logarithmic on both sides and linear between −1 and 1 meV.
