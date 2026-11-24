@@ -12,20 +12,21 @@
  DBCSR| Use Communication thread                                               T (U)
  DBCSR| Communication thread load                                             75 (D)
  DBCSR| MPI: My process id                                                     0
- DBCSR| MPI: Number of processes                                               4
+ DBCSR| MPI: Number of processes                                               8
  DBCSR| OMP: Current number of threads                                         4
  DBCSR| OMP: Max number of threads                                             4
  DBCSR| Split modifier for TAS multiplication algorithm                  1.0E+00 (U)
 
 
-  **** **** ******  **  PROGRAM STARTED AT               2026-11-23 14:11:09.387
- ***** ** ***  *** **   PROGRAM STARTED ON                              n2cn0527
+  **** **** ******  **  PROGRAM STARTED AT               2026-11-23 12:47:48.359
+ ***** ** ***  *** **   PROGRAM STARTED ON                              n2cn0781
  **    ****   ******    PROGRAM STARTED BY                              eprop2d1
- ***** **    ** ** **   PROGRAM PROCESS ID                               2881062
+ ***** **    ** ** **   PROGRAM PROCESS ID                               2566725
   **** **  *******  **  PROGRAM STARTED IN /scratch/hpc-prf-metdyn/eprop2d1_Jan/
-                                           54_Claude/cp2k_scf_closed_shell/0003_
-                                           basis/au_111_slab/ccGRB-Q/smear300_br
-                                           oyden_a0.2_b0.5_nb8_eigval1.0E-6
+                                           54_Claude/cp2k_scf_closed_shell/0013_
+                                           largest_basis/au_111_slab/ccGRB-Q/sme
+                                           ar300_broyden_a0.2_b0.5_nb8_eigval1.0
+                                           E-6
 
  CP2K| version string:                 CP2K version 2026.2 (Development Version)
  CP2K| source code revision number:                                    320030055
@@ -66,7 +67,7 @@
  GLOBAL| Grid backend                                                       AUTO
  GLOBAL| Global print level                                                  LOW
  GLOBAL| MPI I/O enabled                                                       T
- GLOBAL| Total number of message passing processes                             4
+ GLOBAL| Total number of message passing processes                             8
  GLOBAL| Number of distributed systems (nodes)                                 1
  GLOBAL| Number of threads for this process                                    4
  GLOBAL| This output is from process                                           0
@@ -76,12 +77,12 @@
  MEMORY| system memory details [Kb]
  MEMORY|                        rank 0           min           max       average
  MEMORY| MemTotal            263897616     263897616     263897616     263897616
- MEMORY| MemFree             194455052     194454860     194455052     194454908
- MEMORY| Buffers                149616        149616        149616        149616
- MEMORY| Cached               13156660      13156660      13156660      13156660
- MEMORY| Slab                  1859812       1859812       1859812       1859812
- MEMORY| SReclaimable           300744        300744        300744        300744
- MEMORY| MemLikelyFree       199602288     199602096     199602288     199602144
+ MEMORY| MemFree             190891380     190891380     190891380     190891380
+ MEMORY| Buffers                140112        140112        140112        140112
+ MEMORY| Cached               16717216      16717216      16717216      16717216
+ MEMORY| Slab                  3218056       3218056       3218056       3218056
+ MEMORY| SReclaimable          1537588       1537588       1537588       1537588
+ MEMORY| MemLikelyFree       200276656     200276656     200276656     200276656
 
 
  GENERATE|  Preliminary Number of Bonds generated:                             0
@@ -162,38 +163,38 @@
 
   Step     Update method      Time    Convergence         Total energy    Change
   ------------------------------------------------------------------------------
-     1 NoMix/Diag. 0.20E+00   20.6     0.71319266     -2121.8973763996 -2.12E+03
-     2 Broy./Diag. 0.20E+00   24.0     0.05574225     -2177.8392252127 -5.59E+01
-     3 Broy./Diag. 0.20E+00   24.4     0.08970821     -2144.1650105385  3.37E+01
-     4 Broy./Diag. 0.20E+00   24.0     0.00467473     -2121.1152590511  2.30E+01
-     5 Broy./Diag. 0.20E+00   24.1     0.00685331     -2120.5999161296  5.15E-01
-     6 Broy./Diag. 0.20E+00   24.4     0.00151500     -2120.5687622045  3.12E-02
-     7 Broy./Diag. 0.20E+00   24.2     0.00063230     -2120.5501805892  1.86E-02
-     8 Broy./Diag. 0.20E+00   24.2     0.00238521     -2120.4670634067  8.31E-02
-     9 Broy./Diag. 0.20E+00   24.4     0.00136384     -2120.3879656269  7.91E-02
-    10 Broy./Diag. 0.20E+00   24.5     0.00087512     -2120.3518870264  3.61E-02
-    11 Broy./Diag. 0.20E+00   24.3     0.00029344     -2120.3048881264  4.70E-02
-    12 Broy./Diag. 0.20E+00   24.6     0.00029188     -2120.3082563501 -3.37E-03
-    13 Broy./Diag. 0.20E+00   24.5     0.00012306     -2120.2942074371  1.40E-02
-    14 Broy./Diag. 0.20E+00   24.4     0.00018844     -2120.2811874020  1.30E-02
-    15 Broy./Diag. 0.20E+00   24.3     0.00008698     -2120.2823338695 -1.15E-03
-    16 Broy./Diag. 0.20E+00   24.7     0.00013783     -2120.2944311298 -1.21E-02
-    17 Broy./Diag. 0.20E+00   24.4     0.00006674     -2120.3000958229 -5.66E-03
-    18 Broy./Diag. 0.20E+00   24.4     0.00003296     -2120.2930202683  7.08E-03
-    19 Broy./Diag. 0.20E+00   24.8     0.00000924     -2120.2880010661  5.02E-03
-    20 Broy./Diag. 0.20E+00   24.4     0.00000831     -2120.2894433672 -1.44E-03
-    21 Broy./Diag. 0.20E+00   24.5     0.00000302     -2120.2905548625 -1.11E-03
-    22 Broy./Diag. 0.20E+00   24.2     0.00000292     -2120.2904172916  1.38E-04
-    23 Broy./Diag. 0.20E+00   24.7     0.00000119     -2120.2903069104  1.10E-04
-    24 Broy./Diag. 0.20E+00   24.7     0.00000027     -2120.2902536814  5.32E-05
-    25 Broy./Diag. 0.20E+00   24.4     0.00000021     -2120.2902159645  3.77E-05
-    26 Broy./Diag. 0.20E+00   24.8     0.00000012     -2120.2902078702  8.09E-06
-    27 Broy./Diag. 0.20E+00   24.6     0.00000004     -2120.2902110621 -3.19E-06
-    28 Broy./Diag. 0.20E+00   24.6     0.00000002     -2120.2902159189 -4.86E-06
-    29 Broy./Diag. 0.20E+00   24.7     0.00000003     -2120.2902152008  7.18E-07
-    30 Broy./Diag. 0.20E+00   24.7     0.00000001     -2120.2902125463  2.65E-06
-    31 Broy./Diag. 0.20E+00   24.1     0.00000002     -2120.2902128991 -3.53E-07
-    32 Broy./Diag. 0.20E+00   24.5     4.9645E-09     -2120.2902144085 -1.51E-06
+     1 NoMix/Diag. 0.20E+00    9.2     0.71319266     -2121.8973763996 -2.12E+03
+     2 Broy./Diag. 0.20E+00   12.2     0.05574225     -2177.8392252127 -5.59E+01
+     3 Broy./Diag. 0.20E+00   12.3     0.08970821     -2144.1650105385  3.37E+01
+     4 Broy./Diag. 0.20E+00   12.2     0.00467473     -2121.1152590511  2.30E+01
+     5 Broy./Diag. 0.20E+00   12.1     0.00685331     -2120.5999161296  5.15E-01
+     6 Broy./Diag. 0.20E+00   12.2     0.00151500     -2120.5687622045  3.12E-02
+     7 Broy./Diag. 0.20E+00   12.2     0.00063230     -2120.5501805892  1.86E-02
+     8 Broy./Diag. 0.20E+00   12.3     0.00238521     -2120.4670634067  8.31E-02
+     9 Broy./Diag. 0.20E+00   12.3     0.00136384     -2120.3879656269  7.91E-02
+    10 Broy./Diag. 0.20E+00   12.4     0.00087512     -2120.3518870264  3.61E-02
+    11 Broy./Diag. 0.20E+00   12.4     0.00029344     -2120.3048881264  4.70E-02
+    12 Broy./Diag. 0.20E+00   12.4     0.00029188     -2120.3082563501 -3.37E-03
+    13 Broy./Diag. 0.20E+00   12.2     0.00012306     -2120.2942074379  1.40E-02
+    14 Broy./Diag. 0.20E+00   12.3     0.00018844     -2120.2811874016  1.30E-02
+    15 Broy./Diag. 0.20E+00   12.3     0.00008698     -2120.2823338658 -1.15E-03
+    16 Broy./Diag. 0.20E+00   12.4     0.00013783     -2120.2944311283 -1.21E-02
+    17 Broy./Diag. 0.20E+00   12.4     0.00006674     -2120.3000958232 -5.66E-03
+    18 Broy./Diag. 0.20E+00   12.4     0.00003296     -2120.2930202688  7.08E-03
+    19 Broy./Diag. 0.20E+00   12.4     0.00000924     -2120.2880010661  5.02E-03
+    20 Broy./Diag. 0.20E+00   12.4     0.00000831     -2120.2894433671 -1.44E-03
+    21 Broy./Diag. 0.20E+00   12.3     0.00000302     -2120.2905548624 -1.11E-03
+    22 Broy./Diag. 0.20E+00   12.3     0.00000292     -2120.2904172916  1.38E-04
+    23 Broy./Diag. 0.20E+00   12.3     0.00000119     -2120.2903069104  1.10E-04
+    24 Broy./Diag. 0.20E+00   13.3     0.00000027     -2120.2902536814  5.32E-05
+    25 Broy./Diag. 0.20E+00   13.5     0.00000021     -2120.2902159645  3.77E-05
+    26 Broy./Diag. 0.20E+00   12.4     0.00000012     -2120.2902078702  8.09E-06
+    27 Broy./Diag. 0.20E+00   12.4     0.00000004     -2120.2902110621 -3.19E-06
+    28 Broy./Diag. 0.20E+00   12.5     0.00000002     -2120.2902159189 -4.86E-06
+    29 Broy./Diag. 0.20E+00   12.4     0.00000003     -2120.2902152008  7.18E-07
+    30 Broy./Diag. 0.20E+00   12.2     0.00000001     -2120.2902125463  2.65E-06
+    31 Broy./Diag. 0.20E+00   12.3     0.00000002     -2120.2902128991 -3.53E-07
+    32 Broy./Diag. 0.20E+00   12.3     4.9645E-09     -2120.2902144085 -1.51E-06
 
   *** SCF run converged in    32 steps ***
 
@@ -207,7 +208,7 @@
   Self energy of the core charge distribution:              -3698.50852637883463
   Core Hamiltonian energy:                                   1178.25601328120592
   Hartree energy:                                             735.16092292272901
-  Exchange-correlation energy:                               -335.19859254648179
+  Exchange-correlation energy:                               -335.19859254648185
   Electronic entropic energy:                                  -0.00003218841835
   Fermi energy:                                                 0.06681975775070
 
@@ -222,46 +223,52 @@
  -                                                                             -
  -------------------------------------------------------------------------------
  COUNTER                                    TOTAL       BLAS       SMM       ACC
- flops    83 x    83 x   208         190749245440       0.0%    100.0%      0.0%     
- flops    83 x    83 x   224         205422264320       0.0%    100.0%      0.0%     
+ flops    83 x    83 x   112         102711132160       0.0%    100.0%      0.0%     
+ flops    83 x    83 x   128         117384151040       0.0%    100.0%      0.0%     
+ flops    83 x    83 x    96         176076226560       0.0%    100.0%      0.0%     
  flops inhomo. stacks                           0       0.0%      0.0%      0.0%
  flops total                       396.171510E+09       0.0%    100.0%      0.0%
- flops max/rank                    100.566614E+09       0.0%    100.0%      0.0%
+ flops max/rank                     51.807044E+09       0.0%    100.0%      0.0%
  matmuls inhomo. stacks                         0       0.0%      0.0%      0.0%
- matmuls total                             133120       0.0%    100.0%      0.0%
- number of processed stacks                  1024       0.0%    100.0%      0.0%
- average stack size                                     0.0     130.0       0.0
+ matmuls total                             266240       0.0%    100.0%      0.0%
+ number of processed stacks                  4096       0.0%    100.0%      0.0%
+ average stack size                                     0.0      65.0       0.0
  marketing flops                   657.690067E+09
  -------------------------------------------------------------------------------
  # multiplications                             32
- max memory usage/rank              15.470252E+09
- # max total images/rank                        1
+ max memory usage/rank              16.188592E+09
+ # max total images/rank                        2
  # max 3D layers                                1
- # MPI messages exchanged                     256
+ # MPI messages exchanged                    1280
  MPI messages size (bytes):
-  total size                         1.174929E+09
-  min size                           4.419584E+06
-  max size                           4.759552E+06
-  average size                       4.589568E+06
+  total size                         2.349859E+09
+  min size                           1.019904E+06
+  max size                           2.719744E+06
+  average size                       1.835827E+06
  MPI breakdown and total messages size (bytes):
              size <=      128                   0                        0
        128 < size <=     8192                   0                        0
       8192 < size <=    32768                   0                        0
      32768 < size <=   131072                   0                        0
-    131072 < size <=  4194304                   0                        0
-   4194304 < size <= 16777216                 256               1174929408
+    131072 < size <=  4194304                1280               2349858816
+   4194304 < size <= 16777216                   0                        0
   16777216 < size                               0                        0
+ -------------------------------------------------------------------------------
+
+ *** WARNING in dbcsr_mm.F:301 :: Using a non-square number of MPI ranks ***
+ *** might lead to poor performance. Used ranks: 8 Suggested: 9 16       ***
+
  -------------------------------------------------------------------------------
  -                                                                             -
  -                      DBCSR MESSAGE PASSING PERFORMANCE                      -
  -                                                                             -
  -------------------------------------------------------------------------------
  ROUTINE             CALLS      AVE VOLUME [Bytes]
- MP_Bcast                3                     12.
- MP_Allreduce          183                     10.
- MP_Alltoall           512                1595556.
- MP_ISend              256                1192256.
- MP_IRecv              256                1107264.
+ MP_Bcast                4                     12.
+ MP_Allreduce          185                     10.
+ MP_Alltoall           512                 861082.
+ MP_ISend              512                 691257.
+ MP_IRecv              512                 606265.
  -------------------------------------------------------------------------------
 
  -------------------------------------------------------------------------------
@@ -270,21 +277,21 @@
  -                                                                             -
  -------------------------------------------------------------------------------
  LP    KERNEL             BACKEND                              COUNT     PERCENT
- 4     collocate general  CPU                                2518263      25.64%
- 4     integrate general  CPU                                2441952      24.87%
- 5     collocate general  CPU                                1122627      11.43%
- 5     integrate general  CPU                                1088608      11.09%
- 6     collocate general  CPU                                 786753       8.01%
- 6     integrate general  CPU                                 762912       7.77%
- 7     collocate general  CPU                                 450351       4.59%
- 7     integrate general  CPU                                 436704       4.45%
- 8     collocate general  CPU                                  71973       0.73%
- 8     integrate general  CPU                                  69792       0.71%
- 9     collocate general  CPU                                  29766       0.30%
- 9     integrate general  CPU                                  28864       0.29%
- 10    collocate general  CPU                                   5973       0.06%
- 10    integrate general  CPU                                   5792       0.06%
- 0     collocate general  CPU                                     16       0.00%
+ 4     collocate general  CPU                                1218261      25.28%
+ 4     integrate general  CPU                                1181344      24.51%
+ 5     collocate general  CPU                                 568590      11.80%
+ 5     integrate general  CPU                                 551360      11.44%
+ 6     collocate general  CPU                                 397386       8.25%
+ 6     integrate general  CPU                                 385344       8.00%
+ 7     collocate general  CPU                                 219021       4.54%
+ 7     integrate general  CPU                                 212384       4.41%
+ 8     collocate general  CPU                                  28446       0.59%
+ 8     integrate general  CPU                                  27584       0.57%
+ 9     collocate general  CPU                                  12870       0.27%
+ 9     integrate general  CPU                                  12480       0.26%
+ 10    collocate general  CPU                                   2211       0.05%
+ 10    integrate general  CPU                                   2144       0.04%
+ 0     collocate general  CPU                                     64       0.00%
  -------------------------------------------------------------------------------
 
  -------------------------------------------------------------------------------
@@ -293,10 +300,10 @@
  -                                                                             -
  -------------------------------------------------------------------------------
  Memory consumption                Number of allocations  Used [MiB]  Size [MiB]
- Host                                                  6         160         160
+ Host                                                  6          89          89
  -------------------------------------------------------------------------------
 
- MEMORY| Estimated peak process memory [MiB]                                3689
+ MEMORY| Estimated peak process memory [MiB]                                2063
 
  -------------------------------------------------------------------------------
  -                                                                             -
@@ -306,13 +313,15 @@
 
  ROUTINE             CALLS      AVE VOLUME [Bytes]
  MP_Group                4
- MP_Bcast              170                 277626.
- MP_Allreduce          459                   2488.
+ MP_Bcast              171                 276004.
+ MP_Allreduce          459                   2490.
  MP_Sync                37
- MP_Alltoall           685              120485369.
- MP_SendRecv           399                7171867.
- MP_ISendRecv          384                7049472.
- MP_Wait               384
+ MP_Alltoall           695               62305095.
+ MP_SendRecv           693                 849920.
+ MP_ISendRecv          672                 849920.
+ MP_Wait              1662
+ MP_ISend              792                3660873.
+ MP_IRecv              792                3661527.
  -------------------------------------------------------------------------------
 
 
@@ -419,44 +428,47 @@
  -------------------------------------------------------------------------------
  SUBROUTINE                       CALLS  ASD         SELF TIME        TOTAL TIME
                                 MAXIMUM       AVERAGE  MAXIMUM  AVERAGE  MAXIMUM
- CP2K                                 1  1.0    0.011    0.022  808.666  808.666
- qs_energies                          1  2.0    0.000    0.000  807.980  807.984
- scf_env_do_scf                       1  3.0    0.000    0.000  784.411  784.415
- scf_env_do_scf_inner_loop           32  4.0    0.004    0.012  784.411  784.415
- qs_scf_new_mos                      32  5.0    0.001    0.001  298.736  300.801
- eigensolver_symm                    32  6.0    0.011    0.012  293.243  293.270
- qs_ks_update_qs_env                 32  5.0    0.000    0.000  274.734  276.768
- rebuild_ks_matrix                   32  6.0    0.000    0.000  274.529  276.561
- qs_ks_build_kohn_sham_matrix        32  7.0    0.008    0.008  274.529  276.560
- sum_up_and_integrate                32  8.0    0.002    0.003  238.915  240.945
- integrate_v_rspace                  32  9.0    0.001    0.002  238.739  240.771
- grid_integrate_task_list            32 10.0  230.201  235.942  230.201  235.942
- cp_fm_syevd                         33  6.9    0.001    0.001  226.120  226.141
- cp_fm_syevd_base                    33  7.9  226.116  226.136  226.116  226.136
- qs_rho_update_rho_low               33  5.0    0.000    0.000  204.883  204.890
- calculate_rho_elec                  33  6.0    0.376    0.382  204.883  204.889
- grid_collocate_task_list            33  7.0  192.690  196.239  192.690  196.239
- cp_fm_symm                          32  7.0   43.508   43.526   43.508   43.526
- parallel_gemm_fm_gemm               65  7.0    0.000    0.000   33.554   33.576
- cp_fm_gemm                          65  8.0   33.554   33.575   33.554   33.575
- fft_wrap_pw1pw2                    581 10.0    0.019    0.025   31.594   31.773
- fft_wrap_pw1pw2_300                386 11.3    1.962    2.032   30.797   30.989
- qs_vxc_create                       32  8.0    0.001    0.001   29.052   29.067
- xc_vxc_pw_create                    32  9.0    0.662    0.682   29.051   29.067
- fft3d_ps                           581 12.0   16.248   16.396   22.409   22.581
- xc_pw_derive                       192 11.0    0.003    0.004   18.483   18.591
- density_rs2pw                       33  7.0    0.002    0.002   11.426   18.179
- init_scf_run                         1  3.0    0.007    0.008   16.890   16.891
+ CP2K                                 1  1.0    2.005    2.038  414.315  414.349
+ qs_energies                          1  2.0    0.391    0.392  409.755  409.755
+ scf_env_do_scf                       1  3.0    0.049    0.064  396.948  396.948
+ scf_env_do_scf_inner_loop           32  4.0    0.274    0.284  396.899  396.907
+ qs_ks_update_qs_env                 32  5.0    0.029    0.030  146.650  146.674
+ rebuild_ks_matrix                   32  6.0    0.006    0.006  146.402  146.425
+ qs_ks_build_kohn_sham_matrix        32  7.0    0.228    0.229  146.396  146.419
+ qs_scf_new_mos                      32  5.0    0.127    0.128  140.127  140.258
+ eigensolver_symm                    32  6.0    0.106    0.107  137.034  137.092
+ sum_up_and_integrate                32  8.0    0.013    0.014  116.333  116.356
+ integrate_v_rspace                  32  9.0    0.023    0.023  116.155  116.185
+ grid_integrate_task_list            32 10.0  108.252  111.163  108.252  111.163
+ qs_rho_update_rho_low               33  5.0    0.012    0.012  102.636  102.653
+ calculate_rho_elec                  33  6.0    0.243    0.246  102.624  102.641
+ grid_collocate_task_list            33  7.0   91.626   94.854   91.626   94.854
+ cp_fm_syevd                         33  6.9    0.034    0.035   89.558   89.573
+ cp_fm_syevd_base                    33  7.9   89.460   89.479   89.460   89.479
+ cp_fm_symm                          32  7.0   29.323   29.375   29.323   29.375
+ fft_wrap_pw1pw2                    581 10.0    0.013    0.014   28.432   28.744
+ fft_wrap_pw1pw2_300                386 11.3    1.756    1.803   27.814   28.129
+ qs_vxc_create                       32  8.0    0.056    0.056   24.055   24.088
+ xc_vxc_pw_create                    32  9.0    0.367    0.416   23.999   24.032
+ parallel_gemm_fm_gemm               65  7.0    0.039    0.039   21.453   21.474
+ cp_fm_gemm                          65  8.0   21.413   21.435   21.413   21.435
+ fft3d_ps                           581 12.0   13.063   13.280   20.400   20.749
+ xc_pw_derive                       192 11.0    0.002    0.003   16.673   17.012
+ density_rs2pw                       33  7.0    0.025    0.062    9.916   13.461
+ xc_rho_set_and_dset_create          32 10.0    0.677    0.897   12.283   12.565
+ xc_pw_divergence                    32 10.0    0.001    0.001   11.097   11.418
+ gspace_mixing                       31  5.0    0.211    0.215    9.435    9.435
  -------------------------------------------------------------------------------
 
- The number of warnings for this run is : 0
+ The number of warnings for this run is : 1
  
  -------------------------------------------------------------------------------
-  **** **** ******  **  PROGRAM ENDED AT                 2026-11-23 14:24:39.760
- ***** ** ***  *** **   PROGRAM RAN ON                                  n2cn0527
+  **** **** ******  **  PROGRAM ENDED AT                 2026-11-23 12:54:49.652
+ ***** ** ***  *** **   PROGRAM RAN ON                                  n2cn0781
  **    ****   ******    PROGRAM RAN BY                                  eprop2d1
- ***** **    ** ** **   PROGRAM PROCESS ID                               2881062
+ ***** **    ** ** **   PROGRAM PROCESS ID                               2566725
   **** **  *******  **  PROGRAM STOPPED IN /scratch/hpc-prf-metdyn/eprop2d1_Jan/
-                                           54_Claude/cp2k_scf_closed_shell/0003_
-                                           basis/au_111_slab/ccGRB-Q/smear300_br
-                                           oyden_a0.2_b0.5_nb8_eigval1.0E-6
+                                           54_Claude/cp2k_scf_closed_shell/0013_
+                                           largest_basis/au_111_slab/ccGRB-Q/sme
+                                           ar300_broyden_a0.2_b0.5_nb8_eigval1.0
+                                           E-6
