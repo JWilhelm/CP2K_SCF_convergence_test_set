@@ -124,6 +124,21 @@ The figure below shows Broyden mixing (α 0.2, β 0.5 bohr⁻¹, 300 K) per basi
 `EPS_EIGVAL 1.0E-7` changes the energies less (at most 0.6 meV/atom), but does not converge Pd(111) with aug-DZ2
 and aug-TZ2, Li and LiF with ccGRB-Q, and Al(111) and bulk Al with cc-pVQZ.
 
+### Variation of the Broyden parameters
+
+The figure below shows the mean number of SCF steps of the recommended setting for α = 0.15, 0.2, 0.25, 0.3 and
+β = 0.4, 0.5, 0.6 bohr⁻¹ (300 K, `CHOLESKY OFF`, `EPS_EIGVAL 1.0E-6`), each for all 484 runs. The mean includes only
+the runs that converge for all twelve (α, β), so every cell averages the same runs; the number in brackets is the
+number of runs that do not converge. (a) all runs, (b) systems with a band gap, (c) metals and semimetals.
+
+![Broyden alpha and beta](closed_shell/figures/alpha_beta.png)
+
+- Systems with a band gap converge faster with larger α and smaller β (29.1 → 22.8 steps from α 0.2, β 0.5 to
+  α 0.3, β 0.4); metals and semimetals get slower (43.2 → 47.3 steps; slowest run 158 → 214 steps).
+- β 0.6 makes bulk Mg with TZV2P and aug-TZ2 fail; α 0.3, β 0.4 makes SrTiO₃ with aug-TZ2 fail.
+- α 0.25, β 0.4 converges all runs with 6 % fewer steps on average, but its slowest runs need 86 (gap) and 232
+  (metal) steps instead of 75 and 158. α 0.2, β 0.5 stays the recommendation.
+
 ### Comparison with Quantum ESPRESSO
 
 The converged CP2K results were compared with Quantum ESPRESSO 7.3.1, using the same GTH-PBE pseudopotentials, the
@@ -189,8 +204,8 @@ graphene are left out; the axis is logarithmic on both sides and linear between 
 | ccGRB-Q | `ccGRB-Q` | all except MoS₂ (CP2K cannot read the Mo set) and the systems with Na (no Na set) (68) |
 | cc-pVQZ | `cc-pVQZ-GTH` (Ye and Berkelbach, [github.com/hongzhouye/ccgto](https://github.com/hongzhouye/ccgto); converted file `closed_shell/BASIS_ccGTO_YE`) | all 31 systems and 15 displaced structures with elements H–Ar (46) |
 
-**Runs:** each run is one system in one basis set with one setting: 484 runs with the recommended setting, 5771 runs
-in total for all settings.
+**Runs:** each run is one system in one basis set with one setting: 484 runs with the recommended setting, 11095 runs
+in total for all settings (including the α/β scan, which was computed with `EPS_SCF 1.0E-7` directly).
 
 ## Files
 
@@ -204,7 +219,7 @@ in total for all settings.
 **Naming of settings in `all_runs.csv`:**
 - `smear300_` / `smear1000_`: Fermi–Dirac smearing at 300 K or 1000 K.
 - `diag_`: diagonalisation without smearing.
-- `broyden_a0.2_b0.5_nb8`: Broyden mixing, α 0.2, β 0.5, NBUFFER 8.
+- `broyden_a0.2_b0.5_nb8`: Broyden mixing, α 0.2, β 0.5, NBUFFER 8 (likewise for the other α, β).
 - `kerker_`: Kerker mixing.
 - `_eigval1.0E-6`: `CHOLESKY OFF`, `EPS_EIGVAL 1.0E-6`.
 - `ot_diis_full_all_gap0.01_irac_20x15`: OT with DIIS, preconditioner FULL_ALL, `ENERGY_GAP 0.01`, `ALGORITHM IRAC`,
